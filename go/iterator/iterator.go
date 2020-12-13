@@ -7,15 +7,25 @@ import (
 	"github.com/hitsuji-haneta/design-pattern/go/iterator/bookshelf"
 )
 
-func Run() {
-	fmt.Println("hello, world")
-	b := book.New("sample")
-	fmt.Println(b.GetName())
+func Run() (err error) {
+	bs := bookshelf.NewShelf(4)
+	if err = bs.AppendBook(book.New("Around the World in 80 days")); err != nil {
+		return err
+	}
+	if err = bs.AppendBook(book.New("Bible")); err != nil {
+		return err
+	}
+	if err = bs.AppendBook(book.New("Cinderella")); err != nil {
+		return err
+	}
+	if err = bs.AppendBook(book.New("Daddy-Long-Legs")); err != nil {
+		return err
+	}
 
-	bs := bookshelf.New(3)
-	fmt.Println(bs.GetLength())
-
-	bs.AppendBook(b)
-	newBook := bs.GetBookAt(0)
-	fmt.Println(newBook.GetName())
+	it := bs.CreateIterator()
+	for it.HasNext() {
+		book := it.Next()
+		fmt.Println(book.GetName())
+	}
+	return nil
 }
