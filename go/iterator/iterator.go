@@ -8,7 +8,7 @@ import (
 )
 
 func Run() (err error) {
-	bs := bookshelf.NewShelf(4)
+	bs := bookshelf.New(4)
 	if err = bs.AppendBook(book.New("Around the World in 80 days")); err != nil {
 		return err
 	}

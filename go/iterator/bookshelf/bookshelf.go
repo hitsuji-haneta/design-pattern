@@ -2,34 +2,36 @@ package bookshelf
 
 import (
 	"fmt"
-
-	"github.com/hitsuji-haneta/design-pattern/go/iterator/book"
 )
+
+type Book interface {
+	GetName() string
+}
 
 type Iterator interface {
 	HasNext() bool
-	Next() *book.Book
+	Next() Book
 }
 
 type bookShelf struct {
-	books   []*book.Book
+	books   []Book
 	last    int
 	maxsize int
 }
 
-func NewShelf(maxsize int) *bookShelf {
+func New(maxsize int) *bookShelf {
 	return &bookShelf{
-		books:   []*book.Book{},
+		books:   []Book{},
 		last:    0,
 		maxsize: maxsize,
 	}
 }
 
-func (bs *bookShelf) GetBookAt(index int) *book.Book {
+func (bs *bookShelf) GetBookAt(index int) Book {
 	return bs.books[index]
 }
 
-func (bs *bookShelf) AppendBook(book *book.Book) error {
+func (bs *bookShelf) AppendBook(book Book) error {
 	if len(bs.books) >= bs.maxsize {
 		return fmt.Errorf("This book shelf had reached the maximum number of books")
 	}
@@ -43,5 +45,5 @@ func (bs *bookShelf) GetLength() int {
 }
 
 func (bs *bookShelf) CreateIterator() Iterator {
-	return newIterator(bs)
+	return &shelfIterator{bs, 0}
 }

@@ -1,13 +1,13 @@
 package book
 
-type Book struct {
+type book struct {
 	name string
 }
 
-func New(name string) *Book {
-	return &Book{name}
+func New(name string) *book {
+	return &book{name}
 }
 
-func (b *Book) GetName() string {
+func (b *book) GetName() string {
 	return b.name
 }
