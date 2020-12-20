@@ -13,6 +13,9 @@ func (si *shelfIterator) HasNext() bool {
 }
 
 func (si *shelfIterator) Next() Book {
+	if !si.HasNext() {
+		return nil
+	}
 	book := si.shelf.GetBookAt(si.index)
 	si.index++
 	return book
