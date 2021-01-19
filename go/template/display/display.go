@@ -13,7 +13,7 @@ type AbstractDisplay struct {
 func (ad *AbstractDisplay) Display(num int) string {
 
 	result := ad.Printer.Open()
-	for i:=0; i<num; i++ {
+	for i := 0; i < num; i++ {
 		result += ad.Printer.Print(i == num-1)
 	}
 	result += ad.Printer.Close()

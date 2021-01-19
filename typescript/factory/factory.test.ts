@@ -2,7 +2,6 @@ import {
   assertEquals,
   assertThrows,
 } from 'https://deno.land/std@0.81.0/testing/asserts.ts';
-import { IDCard } from './idcard/IDCard.ts';
 import { IDCardFactory } from './idcard/IDCardFactory.ts';
 
 Deno.test({
