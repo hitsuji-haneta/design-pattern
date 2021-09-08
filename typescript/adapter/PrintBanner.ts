@@ -1,5 +1,5 @@
-import { Print } from './interface/Print.ts';
-import { Banner } from './Banner.ts';
+import { Print } from "./interface/Print.ts";
+import { Banner } from "./Banner.ts";
 
 export class PrintBanner extends Banner implements Print {
   constructor(text: string) {
@@ -14,3 +14,4 @@ export class PrintBanner extends Banner implements Print {
     return this.showWithAster();
   };
 }
+
