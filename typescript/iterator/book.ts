@@ -1,7 +1,10 @@
 export class Book {
-  constructor(
-    private name: string,
-  ) {}
+  private name: string;
+
+  constructor(_name: string) {
+    this.name = _name;
+  }
 
   getName = (): string => this.name;
 }
+
