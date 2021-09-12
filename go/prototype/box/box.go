@@ -19,9 +19,9 @@ func (b *Box) Use(msg string) string {
 	}
 
 	box := "\n" +
-          line + "\n" +
-          b.decorator + " %s " + b.decorator + "\n" +
-          line + "\n"
+		line + "\n" +
+		b.decorator + " %s " + b.decorator + "\n" +
+		line + "\n"
 
 	return fmt.Sprintf(box, msg)
 }
